@@ -17,8 +17,11 @@ module.exports = {
         use: [
           'style-loader',
           {
-            loader: 'css-loader',
+            loader: require.resolve('css-loader'),
             options: {
+              modules: {
+                localIdentName: '[name]__[local]___[hash:base64:5]',
+              },
               importLoaders: 1,
             }
           },
@@ -26,15 +29,36 @@ module.exports = {
       },
       {
         test: /\.less$/,
+        exclude: /node_modules|antd\.less/,
         use: [
           'style-loader',
           {
-            loader: 'css-loader',
+            loader: require.resolve('css-loader'),
             options: {
+              modules: {
+                localIdentName: '[name]__[local]___[hash:base64:5]',
+              },
               importLoaders: 1,
             }
           },
           'less-loader'
+        ],
+      },
+      {
+        test: /\.less$/,
+        include: /node_modules|antd\.less/,
+        use: [
+          'style-loader',
+          'css-loader',
+          {
+            loader: "less-loader",
+            options: {
+              lessOptions:{
+                javascriptEnabled: true
+              }
+
+            }
+        }
         ],
       },
       {
@@ -57,7 +81,7 @@ module.exports = {
                 '@babel/plugin-syntax-dynamic-import',
                 ['import', {
                   libraryName: 'antd',
-                  style: 'css',
+                  style: true,
                 }],
               ]
             },

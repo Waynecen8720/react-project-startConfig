@@ -1,13 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.less';
+import classNames from 'classnames/bind';
+import { Button } from 'antd';
+import styles from './index.less';
+
+const cx = classNames.bind(styles);
 
 
 const App = () => {
   return (
-    <div className="test">
+    <Button className={cx('test')} type="primary">
       test
-    </div>
+    </Button>
   )
 }
 
