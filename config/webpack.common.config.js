@@ -53,7 +53,12 @@ module.exports = {
                   {
                     "corejs": 3,
                   }
-                ]
+                ],
+                '@babel/plugin-syntax-dynamic-import',
+                ['import', {
+                  libraryName: 'antd',
+                  style: 'css',
+                }],
               ]
             },
           }
