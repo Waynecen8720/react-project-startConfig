@@ -6,7 +6,7 @@ import './index.less';
 const App = () => {
   return (
     <div className="test">
-      DDerddd
+      test
     </div>
   )
 }
